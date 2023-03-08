@@ -1,0 +1,20 @@
+<h1>products works!</h1>
+<form action="get">
+    <div class="form-group">
+        search: <input type="number" class="form-control" [(ngModel)]="priceMax" >
+    </div>
+</form>
+<table class="table">
+    <tr><th>id</th><th>title</th><th>price</th><th>quantity</th><th>like</th></tr>
+    <tbody *ngFor="let p of productList; let i=index" >
+    <tr *ngIf="p.price<priceMax || priceMax==null">
+        <td>{{p.id}}</td>
+        <td>{{p.title}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.quantity}}</td>
+        <td>{{p.like}}</td>
+        <td><button class="btn btn-warning" (click)="likeProduct(j)">like</button></td>
+        <td><button class="btn btn-warning" [disabled]="p.quantity==0" (click)="buyProduct(i)" > buy</button></td>
+    </tr>
+</tbody>
+</table>
